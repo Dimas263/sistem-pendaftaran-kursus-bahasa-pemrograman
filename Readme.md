@@ -8,7 +8,7 @@
 #### Admin
 <img src="admin_preview.gif">
 
-#### Public
+#### Mahasiswa
 <img src="public_preview.gif">
 
 ### Database Structure
