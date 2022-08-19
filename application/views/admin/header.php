@@ -109,6 +109,10 @@
 				</div>
 				<div class="col text-right">
 					<!-- Menu -->
+					<a href="<?=base_url()?>source/home" class="btn btn-alt-primary ml-5">
+						<i class="fa fa-home"></i>
+						<span class="d-none d-sm-inline">Home</span>
+					</a>
 					<a href="<?=base_url()?>source/keluar" class="btn btn-alt-danger ml-5">
 						<i class="fa fa-sign-out"></i>
 						<span class="d-none d-sm-inline">Keluar</span>

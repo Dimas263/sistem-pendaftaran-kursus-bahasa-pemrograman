@@ -36,9 +36,6 @@ class Data_m extends CI_Model{
 		];
 
 		$this->db->insert('kursus_mahasiswa', $data);
-		echo "<script>
-						alert('Selamat, anda berhasil mendaftar kursus, tunggu beberapa saat, proses verifikasi 1x24 jam');
-    				  </script>";
 	}
 	public function deletekursus($id){
 		$this->db->where('id_info', $id);
@@ -82,5 +79,42 @@ class Data_m extends CI_Model{
 			$this->db->where('id_mahasiswa', $_POST['example-nf-id_mhs']);
 			$this->db->update('kursus_mahasiswa');
 		}
+	}
+	public function tambahmahasiswa(){
+		$directoryName = './upload/krs/';
+		/* Check if the directory already exists. */
+		if (!is_dir($directoryName)) {
+			/* Directory does not exist, so lets create it. */
+			mkdir($directoryName, 0755);
+		}
+		$config['upload_path'] = $directoryName;
+		$config['allowed_types'] = 'jpeg|jpg|png|pdf';
+		$config['max_size'] = 2048;
+
+		$this->load->library('upload', $config);
+
+		if (!$this->upload->do_upload('example-file-input-krs'))
+		{
+			$error = array('error' => $this->upload->display_errors());
+
+			$this->load->view('source/home', $error);
+		}
+		else
+		{
+			$data_krs = array('image_metadata' => $this->upload->data());
+			$nama_krs = $this->upload->data('file_name');
+
+		}
+
+		$data = [
+			'nama' => $_POST['example-nf-nama'],
+			'npm' => $_POST['example-nf-npm'],
+			'kelas' => $_POST['example-nf-kelas'],
+			'nama_kursus' => $_POST['example-nf-nama-kursus'],
+			'berkas_krs' => $nama_krs,
+			'status_kursus' => $_POST['example-nf-status']
+		];
+
+		$this->db->insert('kursus_mahasiswa', $data);
 	}
 }

@@ -58,7 +58,7 @@
 			<div class="col-12">
 				<div class="text-center">
 					<!-- Menu -->
-					<a href="<?=base_url('source/login')?>" class="btn btn-primary ml-5">
+					<a href="<?=base_url('source/mahasiswa')?>" class="btn btn-primary ml-5">
 						<span class="d-none d-sm-inline">Daftar Kursus</span>
 					</a>
 					<!-- END Menu -->

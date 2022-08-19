@@ -12,9 +12,7 @@ class Source extends CI_Controller{
 	}
 	public function index()
 	{
-		$this->load->view('public/header');
-		$this->load->view('public/welcome');
-		$this->load->view('public/footer');
+		$this->load->view('welcome');
 	}
 	public function login()
 	{
@@ -53,6 +51,34 @@ class Source extends CI_Controller{
 		$this->load->view('admin/home');
 		$this->load->view('admin/footer');
 	}
+	public function kursus()
+	{
+		check_not_login();
+		$this->load->view('admin/header');
+		$this->load->view('public/welcome');
+		$this->load->view('admin/footer');
+	}
+	public function admin_kursus()
+	{
+		check_not_login();
+		$this->load->view('admin/header');
+		$this->load->view('admin/admin-role-kursus');
+		$this->load->view('admin/footer');
+	}
+	public function admin_mahasiswa()
+	{
+		check_not_login();
+		$this->load->view('admin/header');
+		$this->load->view('admin/admin-role-mahasiswa');
+		$this->load->view('admin/footer');
+	}
+	public function mahasiswa()
+	{
+		check_not_login();
+		$this->load->view('admin/header');
+		$this->load->view('admin/user-role');
+		$this->load->view('admin/footer');
+	}
 	public function keluar()
 	{
 		$params = array('id_user','username');
@@ -62,33 +88,38 @@ class Source extends CI_Controller{
 	public function daftar_kursus(){
 		check_not_login();
 		$this->Data_m->addkursus();
-		redirect(base_url('source/home'));
+		redirect(base_url('source/message?id=mahasiswa_daftar'));
 	}
 	public function delete_kursus(){
 		check_not_login();
 		$id = $_GET['id'];
 		$this->Data_m->deletekursus($id);
-		redirect(base_url('source/home'));
+		redirect(base_url('source/message?id=kursus_hapus'));
 	}
 	public function tambah_kursus(){
 		check_not_login();
 		$this->Data_m->tambahkursus();
-		redirect(base_url('source/home'));
+		redirect(base_url('source/message?id=kursus_add'));
 	}
 	public function update_kursus(){
 		check_not_login();
 		$this->Data_m->updatekursus();
-		redirect(base_url('source/home'));
+		redirect(base_url('source/message?id=kursus_update'));
+	}
+	public function tambah_mahasiswa(){
+		check_not_login();
+		$this->Data_m->tambahmahasiswa();
+		redirect(base_url('source/message?id=mahasiswa_add'));
 	}
 	public function update_mahasiswa(){
 		check_not_login();
 		$this->Data_m->updatemahasiswa();
-		redirect(base_url('source/home'));
+		redirect(base_url('source/message?id=mahasiswa_update'));
 	}
 	public function delete_mahasiswa(){
 		check_not_login();
 		$id = $_GET['id'];
 		$this->Data_m->deletemahasiswa($id);
-		redirect(base_url('source/home'));
+		redirect(base_url('source/message?id=mahasiswa_hapus'));
 	}
 }

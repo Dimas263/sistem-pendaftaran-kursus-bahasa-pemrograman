@@ -65,7 +65,7 @@
 	</div>
 </div>
 <div class="modal fade" id="tambah_info_kursus" tabindex="-1" role="dialog" aria-labelledby="tambah_info_kursus" aria-hidden="true">
-	<div class="modal-dialog modal-lg modal-dialog-fromleft modal-dialog-popou" role="document">
+	<div class="modal-dialog modal-lg modal-dialog-fromleft modal-dialog-popout" role="document">
 		<div class="modal-content">
 			<div class="block block-themed block-transparent mb-0">
 				<div class="block-header bg-primary-dark">
@@ -131,7 +131,7 @@ $this->db->from("kursus_info");
 $kursus = $this->db->get()->result_array();
 foreach ($kursus as $detail) : ?>
 	<div class="modal fade" id="info_kursus<?= $detail['id_info'] ?>" tabindex="0" role="dialog" aria-labelledby="info_kursus" aria-hidden="true">
-		<div class="modal-dialog modal-lg modal-dialog-fromleft modal-dialog-popou" role="document">
+		<div class="modal-dialog modal-lg modal-dialog-fromleft modal-dialog-popout" role="document">
 			<div class="modal-content">
 				<div class="block block-themed block-transparent mb-0">
 					<div class="block-header bg-primary-dark">
